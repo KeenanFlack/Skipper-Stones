@@ -1,0 +1,28 @@
+name: SkipperStones
+options:
+  bundleIdPrefix: com.skipperstones
+  deploymentTarget:
+    iOS: "17.0"
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: 5.10
+    DEVELOPMENT_TEAM: ""
+targets:
+  SkipperStones:
+    type: application
+    platform: iOS
+    sources:
+      - path: App
+      - path: Game
+    resources:
+      - path: Resources
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.skipperstones.app
+        PRODUCT_NAME: Skipper Stones
+        INFOPLIST_FILE: Resources/Info.plist
+        TARGETED_DEVICE_FAMILY: "1,2"
+        SUPPORTS_MACCATALYST: false
+    scheme:
+      gatherCoverageData: false
