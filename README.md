@@ -1,6 +1,6 @@
-# Skipper Stones
+# Pebble Skip
 
-An iOS rock-skipping game prototype built with SwiftUI and SpriteKit.
+A calm, minimalist iOS pebble-skipping prototype built with SwiftUI and SpriteKit.
 
 ## Requirements
 
@@ -16,22 +16,32 @@ xcodegen generate
 open SkipperStones.xcodeproj
 ```
 
-Select an iPhone simulator and run. Drag from the stone toward the water and release to throw. The current prototype scores bounces and tracks the best score locally.
+Select an iPhone simulator and run. The game opens directly into the Pool region.
+
+## Controls
+
+- Touch and hold anywhere, then pull down and left. The capped line and arc dots preview power and direction.
+- Release to throw. A typical Pool throw produces several automatic skips.
+- Tap during flight for a small, limited lift. Later regions allow more lifts.
+- If the pebble settles on an islet, pull and release again. Otherwise use **Try Again** after the result appears; the game also restarts automatically after eight seconds.
+
+Best distance, longest skip chain, and the most recently reached region are stored with `UserDefaults`.
 
 ## Project layout
 
 - `App/` — SwiftUI app entry point and root view
-- `Game/` — SpriteKit scene, input handling, physics, scoring, and game state
-- `Resources/` — asset catalog and app metadata
+- `Game/GameModels.swift` — centralized tuning constants, deterministic pebble state, palettes, and region profiles
+- `Game/GameScene.swift` — input, fixed-step flight/skip loop, camera, generated scenery, UI, persistence, and restart flow
+- `Resources/` — app metadata
 - `project.yml` — reproducible XcodeGen project definition
 
 ## Next milestones
 
-1. Tune the throw curve and water-bounce feel on device.
-2. Add stone selection and a simple progression loop.
-3. Add sound, haptics, and a camera/shoreline art pass.
-4. Add Game Center leaderboards and analytics only after the core loop feels good.
+1. Tune pull distance, bounce retention, and islet frequency on several real iPhone sizes.
+2. Decide whether midair lift should remain a tap or become a tiny directional gesture.
+3. Add sound and restrained haptics only after the silent loop feels right.
+4. Add progression systems only if they support the journey instead of crowding it.
 
 ## Architecture notes
 
-`GameScene` is intentionally small and owns only game-world concerns. `ContentView` is the app shell and can later host menus, settings, and progression screens without coupling them to SpriteKit physics.
+`ContentView` remains only a SpriteKit host. The prototype intentionally keeps its complete game loop in `GameScene`; split rendering and simulation further only if v1 playtesting justifies a larger production structure.

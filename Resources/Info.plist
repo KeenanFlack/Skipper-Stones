@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
     <key>CFBundleDisplayName</key>
-    <string>Skipper Stones</string>
+    <string>Pebble Skip</string>
     <key>CFBundleName</key>
     <string>SkipperStones</string>
     <key>UILaunchScreen</key>

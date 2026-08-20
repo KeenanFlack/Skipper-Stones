@@ -1,7 +1,7 @@
 import SwiftUI
 
 @main
-struct SkipperStonesApp: App {
+struct PebbleSkipApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
